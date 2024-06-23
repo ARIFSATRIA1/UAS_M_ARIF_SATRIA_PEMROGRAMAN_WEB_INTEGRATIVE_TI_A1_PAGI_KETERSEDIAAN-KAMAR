@@ -26,12 +26,14 @@ class HospitalController extends Controller
             'name' => 'required|string',
             'admission_date' => 'required|date',
             'room_id' => 'required|rooms,id',
+            'level' => 'required|level'
         ]);
 
 
         try {
             $patient = Patient::create([
                 'name' => $request->name,
+                'level' => $request->level,
                 'admission_date' => $request->admission_date,
             ]);
 
@@ -41,6 +43,7 @@ class HospitalController extends Controller
                 $hospitalization = Hospitalization::create([
                     'room_id' => $room->id,
                     'patient_id' => $patient->id,
+                    'level' => $patient->level,
                     'admission_date' => $request->admission_date,
                 ]);
 

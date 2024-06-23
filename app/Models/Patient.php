@@ -9,7 +9,7 @@ class Patient extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'admission_date', 'discharge_date'];
+    protected $fillable = ['name', 'level', 'admission_date', 'discharge_date'];
 
     public function hospitalizations()
     {
